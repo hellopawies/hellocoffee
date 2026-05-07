@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Business Empire</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <header>
+            <h1>Coffee Business Empire</h1>
+            <div id="stats">
+                <div class="stat-box">Day: <span id="ui-day">1</span></div>
+                <div class="stat-box">Money: $<span id="ui-money">1000.00</span></div>
+                <div class="stat-box">Popularity: <span id="ui-popularity">50</span>%</div>
+            </div>
+        </header>
+
+        <div id="main-content">
+            <div id="left-panel">
+                <div id="inventory" class="panel">
+                    <h2>Inventory</h2>
+                    <p>Coffee Beans: <span id="ui-beans">50</span></p>
+                    <p>Milk: <span id="ui-milk">50</span></p>
+                    <p>Cups: <span id="ui-cups">50</span></p>
+                </div>
+
+                <div id="actions" class="panel">
+                    <h2>Actions</h2>
+                    <div>
+                        <label for="price-input">Set Coffee Price: $</label>
+                        <input type="number" id="price-input" value="5.00" step="0.50" min="1.00">
+                    </div>
+                    <div class="store-buttons">
+                        <button id="btn-buy-beans">Buy Beans ($50)</button>
+                        <button id="btn-buy-milk">Buy Milk ($30)</button>
+                        <button id="btn-buy-cups">Buy Cups ($20)</button>
+                    </div>
+                    <button id="btn-advance" class="primary-btn">Advance Day</button>
+                </div>
+            </div>
+
+            <div id="right-panel">
+                <div id="events-log" class="panel">
+                    <h2>News & Events</h2>
+                    <ul id="log-list">
+                        <li>Welcome to your new coffee shop!</li>
+                    </ul>
+                </div>
+
+                <div id="market" class="panel">
+                    <h2>Market (Franchises & Stocks)</h2>
+                    <div id="franchise-section">
+                        <p>Franchises Owned: <span id="ui-franchises">0</span></p>
+                        <button id="btn-buy-franchise">Buy Franchise ($5000)</button>
+                    </div>
+                    <hr>
+                    <div id="stocks-section">
+                        <h3>Stock Market</h3>
+                        <div id="stock-list">
+                            <!-- Stocks will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
