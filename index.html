@@ -14,6 +14,7 @@
                 <div class="stat-box">Day: <span id="ui-day">1</span></div>
                 <div class="stat-box">Money: $<span id="ui-money">1000.00</span></div>
                 <div class="stat-box">Popularity: <span id="ui-popularity">50</span>%</div>
+                <div class="stat-box">Weather: <span id="ui-weather">Sunny ☀️</span></div>
             </div>
         </header>
 
@@ -24,6 +25,28 @@
                     <p>Coffee Beans: <span id="ui-beans">50</span></p>
                     <p>Milk: <span id="ui-milk">50</span></p>
                     <p>Cups: <span id="ui-cups">50</span></p>
+                    <p>Pastries: <span id="ui-pastries">10</span></p>
+                </div>
+
+                <div id="actions" class="panel">
+                    <h2>Inventory & Pricing</h2>
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <div>
+                            <label for="price-input">Coffee: $</label>
+                            <input type="number" id="price-input" value="5.00" step="0.50" min="1.00">
+                        </div>
+                        <div>
+                            <label for="pastry-price-input">Pastry: $</label>
+                            <input type="number" id="pastry-price-input" value="3.50" step="0.50" min="1.00">
+                        </div>
+                    </div>
+                    <div class="store-buttons">
+                        <button id="btn-buy-beans">Buy Beans ($50)</button>
+                        <button id="btn-buy-milk">Buy Milk ($30)</button>
+                        <button id="btn-buy-cups">Buy Cups ($20)</button>
+                        <button id="btn-buy-pastries">Buy Pastries ($20)</button>
+                    </div>
+                    <button id="btn-advance" class="primary-btn">Advance Day</button>
                 </div>
 
                 <div id="business-expansion" class="panel">
@@ -46,30 +69,34 @@
                         <button id="btn-pay-loan" class="secondary-btn">Pay off Loan</button>
                     </div>
                 </div>
-
-                <div id="actions" class="panel">
-                    <h2>Inventory & Pricing</h2>
-                    <div>
-                        <label for="price-input">Set Coffee Price: $</label>
-                        <input type="number" id="price-input" value="5.00" step="0.50" min="1.00">
-                    </div>
-                    <div class="store-buttons">
-                        <button id="btn-buy-beans">Buy Beans ($50)</button>
-                        <button id="btn-buy-milk">Buy Milk ($30)</button>
-                        <button id="btn-buy-cups">Buy Cups ($20)</button>
-                    </div>
-                    <button id="btn-advance" class="primary-btn">Advance Day</button>
-                </div>
             </div>
 
-            <div id="right-panel">
+            <div id="middle-panel">
+                <div id="real-estate" class="panel">
+                    <h2>Real Estate</h2>
+                    <p>Location: <strong id="ui-location">Coffee Cart</strong></p>
+                    <p>Daily Rent: $<span id="ui-rent">0</span></p>
+                    <button class="secondary-btn" onclick="upgradeLocation()">Upgrade Location</button>
+                </div>
+
+                <div id="marketing" class="panel">
+                    <h2>Marketing</h2>
+                    <div class="store-buttons">
+                        <button id="btn-mark-flyers" onclick="toggleMarketing('flyers')">Start Flyers ($10/day)</button>
+                        <button id="btn-mark-social" onclick="toggleMarketing('socialMedia')">Start Social ($30/day)</button>
+                        <button id="btn-mark-tv" onclick="toggleMarketing('tvAds')">Start TV Ads ($100/day)</button>
+                    </div>
+                </div>
+
                 <div id="events-log" class="panel">
                     <h2>News & Events</h2>
                     <ul id="log-list">
                         <li>Welcome to your new coffee shop!</li>
                     </ul>
                 </div>
+            </div>
 
+            <div id="right-panel">
                 <div id="market" class="panel">
                     <h2>Market (Franchises & Stocks)</h2>
                     <div id="franchise-section">
