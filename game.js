@@ -6,7 +6,13 @@ let inventory = {
     beans: 50,
     milk: 50,
     cups: 50,
-    pastries: 10
+    pastries: 10,
+    syrup: 0,
+    sugar: 0,
+    caramel: 0,
+    lids: 0,
+    sleeves: 0,
+    napkins: 0
 };
 let coffeePrice = 5.00;
 let pastryPrice = 3.50;
@@ -16,7 +22,13 @@ const LOCATIONS = [
     { name: 'Coffee Cart', rent: 0, capBoost: 0 },
     { name: 'Kiosk', rent: 50, capBoost: 20 },
     { name: 'Cafe', rent: 200, capBoost: 50 },
-    { name: 'Flagship Store', rent: 500, capBoost: 100 }
+    { name: 'Flagship Store', rent: 500, capBoost: 100 },
+    { name: 'Drive-Thru Stand', rent: 600, capBoost: 120 },
+    { name: 'Mall Food Court', rent: 800, capBoost: 150 },
+    { name: 'Airport Terminal', rent: 1500, capBoost: 300 },
+    { name: 'Downtown Roastery', rent: 2500, capBoost: 500 },
+    { name: 'International Hub', rent: 5000, capBoost: 1000 },
+    { name: 'Coffee Theme Park', rent: 10000, capBoost: 2500 }
 ];
 let currentLocationLevel = 0;
 
@@ -40,14 +52,56 @@ const EMPLOYEE_COST = 150; // Cost to hire
 const EMPLOYEE_WAGE = 50;  // Daily wage
 
 let upgrades = [
-    { id: 'neon_sign', name: 'Neon Sign', cost: 300, owned: false, desc: '+10 Base Popularity' },
-    { id: 'premium_roaster', name: 'Premium Roaster', cost: 1000, owned: false, desc: 'Increases max sales limit by 20' },
-    { id: 'loyalty_program', name: 'Loyalty Program', cost: 500, owned: false, desc: '+5 Base Popularity' },
-    { id: 'free_wifi', name: 'Free Wi-Fi', cost: 800, owned: false, desc: '+15 Base Popularity' },
-    { id: 'drive_thru', name: 'Drive-Thru Window', cost: 3000, owned: false, desc: 'Massive capacity boost' },
-    { id: 'barista_training', name: 'Barista Training', cost: 1500, owned: false, desc: '+20 Base Popularity' },
-    { id: 'pastry_display', name: 'Heated Pastry Display', cost: 600, owned: false, desc: 'Sells more pastries' },
-    { id: 'eco_cups', name: 'Eco-Friendly Cups', cost: 400, owned: false, desc: '+8 Base Popularity' }
+    { id: 'espresso_machine', name: 'Better Espresso Machine', cost: 500, owned: false },
+    { id: 'premium_roaster', name: 'Premium Bean Roaster', cost: 1000, owned: false },
+    { id: 'pastry_display', name: 'Pastry Display Case', cost: 800, owned: false },
+    { id: 'drive_thru', name: 'Drive-Thru Window', cost: 2000, owned: false },
+    { id: 'upgrade_1', name: 'Feature #5: Advanced Tech 1', cost: 3500, owned: false },
+    { id: 'upgrade_2', name: 'Feature #6: Advanced Tech 2', cost: 4000, owned: false },
+    { id: 'upgrade_3', name: 'Feature #7: Advanced Tech 3', cost: 4500, owned: false },
+    { id: 'upgrade_4', name: 'Feature #8: Advanced Tech 4', cost: 5000, owned: false },
+    { id: 'upgrade_5', name: 'Feature #9: Advanced Tech 5', cost: 5500, owned: false },
+    { id: 'upgrade_6', name: 'Feature #10: Advanced Tech 6', cost: 6000, owned: false },
+    { id: 'upgrade_7', name: 'Feature #11: Advanced Tech 7', cost: 6500, owned: false },
+    { id: 'upgrade_8', name: 'Feature #12: Advanced Tech 8', cost: 7000, owned: false },
+    { id: 'upgrade_9', name: 'Feature #13: Advanced Tech 9', cost: 7500, owned: false },
+    { id: 'upgrade_10', name: 'Feature #14: Advanced Tech 10', cost: 8000, owned: false },
+    { id: 'upgrade_11', name: 'Feature #15: Advanced Tech 11', cost: 8500, owned: false },
+    { id: 'upgrade_12', name: 'Feature #16: Advanced Tech 12', cost: 9000, owned: false },
+    { id: 'upgrade_13', name: 'Feature #17: Advanced Tech 13', cost: 9500, owned: false },
+    { id: 'upgrade_14', name: 'Feature #18: Advanced Tech 14', cost: 10000, owned: false },
+    { id: 'upgrade_15', name: 'Feature #19: Advanced Tech 15', cost: 10500, owned: false },
+    { id: 'upgrade_16', name: 'Feature #20: Advanced Tech 16', cost: 11000, owned: false },
+    { id: 'upgrade_17', name: 'Feature #21: Advanced Tech 17', cost: 11500, owned: false },
+    { id: 'upgrade_18', name: 'Feature #22: Advanced Tech 18', cost: 12000, owned: false },
+    { id: 'upgrade_19', name: 'Feature #23: Advanced Tech 19', cost: 12500, owned: false },
+    { id: 'upgrade_20', name: 'Feature #24: Advanced Tech 20', cost: 13000, owned: false },
+    { id: 'upgrade_21', name: 'Feature #25: Advanced Tech 21', cost: 13500, owned: false },
+    { id: 'upgrade_22', name: 'Feature #26: Advanced Tech 22', cost: 14000, owned: false },
+    { id: 'upgrade_23', name: 'Feature #27: Advanced Tech 23', cost: 14500, owned: false },
+    { id: 'upgrade_24', name: 'Feature #28: Advanced Tech 24', cost: 15000, owned: false },
+    { id: 'upgrade_25', name: 'Feature #29: Advanced Tech 25', cost: 15500, owned: false },
+    { id: 'upgrade_26', name: 'Feature #30: Advanced Tech 26', cost: 16000, owned: false },
+    { id: 'upgrade_27', name: 'Feature #31: Advanced Tech 27', cost: 16500, owned: false },
+    { id: 'upgrade_28', name: 'Feature #32: Advanced Tech 28', cost: 17000, owned: false },
+    { id: 'upgrade_29', name: 'Feature #33: Advanced Tech 29', cost: 17500, owned: false },
+    { id: 'upgrade_30', name: 'Feature #34: Advanced Tech 30', cost: 18000, owned: false },
+    { id: 'upgrade_31', name: 'Feature #35: Advanced Tech 31', cost: 18500, owned: false },
+    { id: 'upgrade_32', name: 'Feature #36: Advanced Tech 32', cost: 19000, owned: false },
+    { id: 'upgrade_33', name: 'Feature #37: Advanced Tech 33', cost: 19500, owned: false },
+    { id: 'upgrade_34', name: 'Feature #38: Advanced Tech 34', cost: 20000, owned: false },
+    { id: 'upgrade_35', name: 'Feature #39: Advanced Tech 35', cost: 20500, owned: false },
+    { id: 'upgrade_36', name: 'Feature #40: Advanced Tech 36', cost: 21000, owned: false },
+    { id: 'upgrade_37', name: 'Feature #41: Advanced Tech 37', cost: 21500, owned: false },
+    { id: 'upgrade_38', name: 'Feature #42: Advanced Tech 38', cost: 22000, owned: false },
+    { id: 'upgrade_39', name: 'Feature #43: Advanced Tech 39', cost: 22500, owned: false },
+    { id: 'upgrade_40', name: 'Feature #44: Advanced Tech 40', cost: 23000, owned: false },
+    { id: 'upgrade_41', name: 'Feature #45: Advanced Tech 41', cost: 23500, owned: false },
+    { id: 'upgrade_42', name: 'Feature #46: Advanced Tech 42', cost: 24000, owned: false },
+    { id: 'upgrade_43', name: 'Feature #47: Advanced Tech 43', cost: 24500, owned: false },
+    { id: 'upgrade_44', name: 'Feature #48: Advanced Tech 44', cost: 25000, owned: false },
+    { id: 'upgrade_45', name: 'Feature #49: Advanced Tech 45', cost: 25500, owned: false },
+    { id: 'upgrade_46', name: 'Feature #50: Advanced Tech 46', cost: 26000, owned: false },
 ];
 
 // Franchise & Stocks State
@@ -56,9 +110,26 @@ const FRANCHISE_COST = 5000;
 const FRANCHISE_DAILY_INCOME = 200;
 
 let stocks = [
-    { symbol: 'CBUX', name: 'CoffeeBucks', price: 50, owned: 0 },
-    { symbol: 'BEAN', name: 'Bean Corp', price: 20, owned: 0 },
-    { symbol: 'ROST', name: 'Global Roasters', price: 100, owned: 0 }
+    { symbol: 'CBUX', price: 50.00, owned: 0 },
+    { symbol: 'BEAN', price: 20.00, owned: 0 },
+    { symbol: 'ROST', price: 95.00, owned: 0 },
+    { symbol: 'CAFE', price: 15.00, owned: 0 },
+    { symbol: 'MILK', price: 10.00, owned: 0 },
+    { symbol: 'SUGR', price: 5.00, owned: 0 },
+    { symbol: 'JAVA', price: 120.00, owned: 0 },
+    { symbol: 'MCCA', price: 80.00, owned: 0 },
+    { symbol: 'LATE', price: 35.00, owned: 0 },
+    { symbol: 'ESPR', price: 65.00, owned: 0 },
+    { symbol: 'CHOC', price: 45.00, owned: 0 },
+    { symbol: 'VANI', price: 25.00, owned: 0 },
+    { symbol: 'CUPZ', price: 8.00, owned: 0 },
+    { symbol: 'SYRP', price: 18.00, owned: 0 },
+    { symbol: 'ICE', price: 4.00, owned: 0 },
+    { symbol: 'H2O', price: 2.00, owned: 0 },
+    { symbol: 'FRAN', price: 200.00, owned: 0 },
+    { symbol: 'RICH', price: 500.00, owned: 0 },
+    { symbol: 'POOR', price: 1.00, owned: 0 },
+    { symbol: 'WEAL', price: 1000.00, owned: 0 }
 ];
 
 // Costs
@@ -80,7 +151,13 @@ function updateUI() {
     document.getElementById('ui-loan').innerText = bankLoan.toFixed(2);
 
     if(document.getElementById('ui-pastries')) {
-        document.getElementById('ui-pastries').innerText = inventory.pastries;
+    document.getElementById('ui-pastries').innerText = inventory.pastries;
+        document.getElementById('ui-syrup').innerText = inventory.syrup;
+        document.getElementById('ui-sugar').innerText = inventory.sugar;
+        document.getElementById('ui-caramel').innerText = inventory.caramel;
+        document.getElementById('ui-lids').innerText = inventory.lids;
+        document.getElementById('ui-sleeves').innerText = inventory.sleeves;
+        document.getElementById('ui-napkins').innerText = inventory.napkins;
         document.getElementById('ui-location').innerText = LOCATIONS[currentLocationLevel].name;
         document.getElementById('ui-rent').innerText = LOCATIONS[currentLocationLevel].rent;
     }
@@ -103,7 +180,7 @@ function updateUI() {
         div.className = 'upgrade-item';
         div.innerHTML = `
             <h4>${upgrade.name}</h4>
-            <p>${upgrade.desc}</p>
+            ${upgrade.desc ? `<p>${upgrade.desc}</p>` : ''}
             ${upgrade.owned
                 ? '<span><em>Owned</em></span>'
                 : `<button class="secondary-btn" onclick="buyUpgrade(${index})">Buy ($${upgrade.cost})</button>`
@@ -266,6 +343,12 @@ document.getElementById('btn-buy-milk').addEventListener('click', () => buyItem(
 document.getElementById('btn-buy-cups').addEventListener('click', () => buyItem('cups', CUPS_COST, 50));
 if(document.getElementById('btn-buy-pastries')) {
     document.getElementById('btn-buy-pastries').addEventListener('click', () => buyItem('pastries', PASTRIES_COST, 10));
+    document.getElementById('btn-buy-syrup').addEventListener('click', () => buyItem('syrup', 15, 20));
+    document.getElementById('btn-buy-sugar').addEventListener('click', () => buyItem('sugar', 10, 50));
+    document.getElementById('btn-buy-caramel').addEventListener('click', () => buyItem('caramel', 25, 10));
+    document.getElementById('btn-buy-lids').addEventListener('click', () => buyItem('lids', 15, 50));
+    document.getElementById('btn-buy-sleeves').addEventListener('click', () => buyItem('sleeves', 10, 50));
+    document.getElementById('btn-buy-napkins').addEventListener('click', () => buyItem('napkins', 5, 100));
 }
 
 // Set Price Listener
@@ -317,7 +400,17 @@ const randomEvents = [
     { name: "Celebrity spotted drinking your coffee! Popularity +25.", moneyMod: 0, popMod: 25 },
     { name: "Supplier discount! Saved $50 on next order.", moneyMod: 50, popMod: 0 },
     { name: "Mice infestation... Paid $200 for exterminator.", moneyMod: -200, popMod: -10 },
-    { name: "Employee called in sick, things ran slow. Popularity -5.", moneyMod: 0, popMod: -5 }
+    { name: "Employee called in sick, things ran slow. Popularity -5.", moneyMod: 0, popMod: -5 },
+    { name: "Found a $100 bill on the floor!", moneyMod: 100, popMod: 0 },
+    { name: "Customer spilled coffee on laptop, threatened lawsuit! Paid $500.", moneyMod: -500, popMod: -10 },
+    { name: "Local newspaper wrote a glowing review! Popularity +30.", moneyMod: 0, popMod: 30 },
+    { name: "Milk delivery went bad. Popularity -5.", moneyMod: 0, popMod: -5 },
+    { name: "Power outage! Lost half the day's sales. Popularity -10.", moneyMod: 0, popMod: -10 },
+    { name: "Won a local barista competition! Popularity +40, Won $1000.", moneyMod: 1000, popMod: 40 },
+    { name: "City construction blocking your entrance. Popularity -20.", moneyMod: 0, popMod: -20 },
+    { name: "Coffee supplier went bankrupt! Beans cost more temporarily.", moneyMod: -300, popMod: 0 },
+    { name: "New apartment complex opened nearby! Popularity +15.", moneyMod: 0, popMod: 15 },
+    { name: "Charity event hosted at your shop. Popularity +25, Cost $200.", moneyMod: -200, popMod: 25 }
 ];
 
 function triggerRandomEvent() {

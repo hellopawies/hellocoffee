@@ -22,10 +22,22 @@
             <div id="left-panel">
                 <div id="inventory" class="panel">
                     <h2>Inventory</h2>
-                    <p>Coffee Beans: <span id="ui-beans">50</span></p>
-                    <p>Milk: <span id="ui-milk">50</span></p>
-                    <p>Cups: <span id="ui-cups">50</span></p>
-                    <p>Pastries: <span id="ui-pastries">10</span></p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr;">
+                        <div>
+                            <p>Coffee Beans: <span id="ui-beans">50</span></p>
+                            <p>Milk: <span id="ui-milk">50</span></p>
+                            <p>Cups: <span id="ui-cups">50</span></p>
+                            <p>Pastries: <span id="ui-pastries">10</span></p>
+                            <p>Syrup: <span id="ui-syrup">0</span></p>
+                        </div>
+                        <div>
+                            <p>Sugar: <span id="ui-sugar">0</span></p>
+                            <p>Caramel: <span id="ui-caramel">0</span></p>
+                            <p>Lids: <span id="ui-lids">0</span></p>
+                            <p>Sleeves: <span id="ui-sleeves">0</span></p>
+                            <p>Napkins: <span id="ui-napkins">0</span></p>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="actions" class="panel">
@@ -40,13 +52,19 @@
                             <input type="number" id="pastry-price-input" value="3.50" step="0.50" min="1.00">
                         </div>
                     </div>
-                    <div class="store-buttons">
+                    <div class="store-buttons" style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
                         <button id="btn-buy-beans">Buy Beans ($50)</button>
                         <button id="btn-buy-milk">Buy Milk ($30)</button>
                         <button id="btn-buy-cups">Buy Cups ($20)</button>
                         <button id="btn-buy-pastries">Buy Pastries ($20)</button>
+                        <button id="btn-buy-syrup">Buy Syrup ($15)</button>
+                        <button id="btn-buy-sugar">Buy Sugar ($10)</button>
+                        <button id="btn-buy-caramel">Buy Caramel ($25)</button>
+                        <button id="btn-buy-lids">Buy Lids ($15)</button>
+                        <button id="btn-buy-sleeves">Buy Sleeves ($10)</button>
+                        <button id="btn-buy-napkins">Buy Napkins ($5)</button>
                     </div>
-                    <button id="btn-advance" class="primary-btn">Advance Day</button>
+                    <button id="btn-advance" class="primary-btn" style="margin-top: 10px;">Advance Day</button>
                 </div>
 
                 <div id="business-expansion" class="panel">
