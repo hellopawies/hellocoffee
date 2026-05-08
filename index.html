@@ -26,8 +26,29 @@
                     <p>Cups: <span id="ui-cups">50</span></p>
                 </div>
 
+                <div id="business-expansion" class="panel">
+                    <h2>Staff & Upgrades</h2>
+                    <p>Employees: <span id="ui-employees">0</span></p>
+                    <button id="btn-hire-staff" class="secondary-btn">Hire Employee ($150)</button>
+
+                    <h3 style="margin-top: 15px;">Shop Upgrades</h3>
+                    <div id="upgrades-list">
+                        <!-- Upgrades generated via JS -->
+                    </div>
+                </div>
+
+                <div id="banking" class="panel">
+                    <h2>Bank of Bean</h2>
+                    <p>Current Debt: $<span id="ui-loan">0.00</span></p>
+                    <p style="font-size: 0.85em; color: #666;">Interest Rate: 5% daily</p>
+                    <div style="display: flex; gap: 10px;">
+                        <button id="btn-take-loan" class="secondary-btn">Take $1000 Loan</button>
+                        <button id="btn-pay-loan" class="secondary-btn">Pay off Loan</button>
+                    </div>
+                </div>
+
                 <div id="actions" class="panel">
-                    <h2>Actions</h2>
+                    <h2>Inventory & Pricing</h2>
                     <div>
                         <label for="price-input">Set Coffee Price: $</label>
                         <input type="number" id="price-input" value="5.00" step="0.50" min="1.00">

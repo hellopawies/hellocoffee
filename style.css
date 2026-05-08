@@ -137,6 +137,35 @@ button.primary-btn:hover {
     background-color: #4a754d;
 }
 
+button.secondary-btn {
+    background-color: var(--latte);
+    color: var(--espresso);
+    padding: 8px 12px;
+    font-size: 0.9em;
+}
+
+button.secondary-btn:hover {
+    background-color: var(--caramel);
+    color: white;
+}
+
+.upgrade-item {
+    background: var(--milk);
+    border: 1px solid var(--latte);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.upgrade-item h4 {
+    margin: 0 0 5px 0;
+    color: var(--espresso);
+}
+.upgrade-item p {
+    margin: 0 0 8px 0;
+    font-size: 0.85em;
+    color: #555;
+}
+
 input[type="number"] {
     padding: 8px 12px;
     border-radius: 4px;
